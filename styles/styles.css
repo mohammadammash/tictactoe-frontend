@@ -1,53 +1,72 @@
 /* CSS RESET */
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-h1{
-    font-size: 62px;
+h1 {
+  font-size: 62px;
 }
-h2{
-    font-size: 31px;
+h2 {
+  font-size: 31px;
 }
 
 /* MAIN */
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height:100vh;
-    background-color: #F4D6CC;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4d6cc;
 }
-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height:80%;
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 80%;
 }
-.player1{
-    color :rgb(198, 0, 0);
+.player1 {
+  color: rgb(198, 0, 0);
 }
-.player2{
-    color: rgb(164, 164, 0);
+.player2 {
+  color: rgb(164, 164, 0);
 }
-.board{
-    width:40%;
-    height: 30%;;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+.board {
+  width: 40%;
+  height: 30%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
-.tile{
-    /* font-color to hide value inside the tile */
-    color: #F4D6CC;
-    border: 0.5px solid rgb(99, 99, 99);
-    cursor: pointer;
+.tile {
+  /* transparent to don't show the value used only for JS */
+  color: transparent;
+  border: 0.5px solid rgb(99, 99, 99);
+  cursor: pointer;
 }
-.reset-btn{
-    padding:7px 30px;
-    border-radius:5px;
-    background-color: transparent;
-    font-size:16px;
+.reset-btn {
+  padding: 7px 30px;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+/* Tiles interaction for ---JS---: */
+/* PLAYER1 */
+.redIcon {
+  background: url("../assets/red.png");
+  /* prevent user to reclick */
+  cursor: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+/* PLAYER2 */
+.yellowIcon {
+  background: url("../assets/yellow.png");
+  cursor: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: center;
 }
