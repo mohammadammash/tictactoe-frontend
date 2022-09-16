@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 h1 {
-  font-size: 62px;
+  font-size: 50px;
 }
 h2 {
   font-size: 31px;
@@ -30,6 +30,7 @@ main {
   justify-content: space-around;
   align-items: center;
   height: 80%;
+  width:60%;
 }
 .player1 {
   color: #ff030b;
@@ -38,7 +39,7 @@ main {
   color: #f9cf03;
 }
 .board {
-  width: 40%;
+  width: 185px;
   height: 30%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

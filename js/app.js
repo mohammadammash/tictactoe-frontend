@@ -15,7 +15,8 @@ const restartGame = () => {
   gameOver = false;
   playerTurn = "red";
   for (let tile of tiles) tile.classList.remove("yellowIcon", "redIcon");
-  board.classList.remove('yellowBg','redBg');
+  board.classList.remove("yellowBg", "redBg"); //remove if found
+  title.textContent = "Coins Tic-Tac-Toe";
 };
 
 // check RED win:
@@ -107,13 +108,13 @@ const checkWinner = () => {
 
   // if red/player1 wins:
   if (result === "red-wins") {
-    title.textContent = "Player1 '$Red Coin' WINSS!!";
+    title.textContent = "Red WINSS!!";
     score1 += 1;
     player1_score.textContent = score1;
     gameOver = true;
     // if yellow/player2 wins:
   } else if (result === "yellow-wins") {
-    title.textContent = "Player2'$Yellow Coin' WINSS!!";
+    title.textContent = "Yellow WINSS!!";
     board.classList.add("yellowBg");
     score2 += 1;
     player2_score.textContent = score2;
@@ -140,4 +141,4 @@ const play = function () {
 // each time a tile in the board is clicked
 for (let tile of tiles) tile.addEventListener("click", play);
 // each time a user clicks on the restart-button
-restart_button.addEventListener('click',restartGame);
+restart_button.addEventListener("click", restartGame);
