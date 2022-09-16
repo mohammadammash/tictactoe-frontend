@@ -5,6 +5,7 @@ const player1_score = document.getElementById("player1_score"); //RedPlayer
 const player2_score = document.getElementById("player2_score"); //YellowPlayer2
 //title to show result
 const title = document.getElementById("title");
+let [score1, score2] = [0, 0];
 
 // game vars
 let playerTurn = "red";
@@ -98,9 +99,26 @@ const check_yellowWin = () => {
 
 // check Winner
 const checkWinner = () => {
-  if (check_redWin()) return "red-wins";
-  else if (check_yellowWin()) return "yellow-wins";
-  return "nothing-yet";
+  let result;
+  if (check_redWin()) result= "red-wins";
+  else if (check_yellowWin()) result= "yellow-wins";
+  else result= "nothing-yet";
+
+
+  // if red/player1 wins:
+  if (result === "red-wins") {
+    title.textContent = "Player1 '$Red Coin' WINSS!!";
+    score1 += 1;
+    player1_score.textContent = score1;
+    gameOver = true;
+    // if yellow/player2 wins:
+  } else if (result === "yellow-wins") {
+    title.textContent = "Player2'$Yellow Coin' WINSS!!";
+    board.classList.add("yellowBg");
+    score2 += 1;
+    player2_score.textContent = score2;
+    gameOver = true;
+};
 };
 
 // change player:
@@ -108,25 +126,13 @@ const changePlayer = () => {};
 
 // i didn't used arrow function=> this doesn't work well within //MAIN GAME
 const play = function () {
-    //validate if game is on, or it's over
+  //validate if game is on, or it's over
   if (gameOver) return;
 
   if (playerTurn == "red") this.classList.add("redIcon");
   else this.classList.add("yellowIcon");
   //after each click/add => check if there is a WINNER!
-  const result = checkWinner();
-    // if red/player1 wins:
-  if (result === "red-wins") {
-    title.textContent = "Player1 '$Red Coin' WINSS!!";
-    gameOver = true;
-    return;
-    // if yellow/player2 wins:
-  } else if (result === "yellow-wins") {
-    title.textContent = "Player2'$Yellow Coin' WINSS!!";
-    board.classList.add("yellowBg");
-    gameOver = true;
-    return;
-  } else if (result == "nothing-yet") console.log("NOTHING!!!");
+  checkWinner();
   //change player if currentRed then it becomes yellow, and vice versa
   playerTurn = playerTurn === "red" ? (playerTurn = "yellow") : "red";
 };
