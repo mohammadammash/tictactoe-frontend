@@ -18,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4d6cc;
+  background: linear-gradient(45deg, rgb(82, 82, 82) 0 50%, rgb(157, 157, 157) 50% 100%);
 }
 main {
   display: flex;
@@ -28,10 +28,10 @@ main {
   height: 80%;
 }
 .player1 {
-  color: rgb(198, 0, 0);
+  color: #FF030B;
 }
 .player2 {
-  color: rgb(164, 164, 0);
+  color: #F9CF03;
 }
 .board {
   width: 40%;

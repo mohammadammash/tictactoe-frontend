@@ -15,7 +15,7 @@ winPatterns.add("258");
 winPatterns.add("048");
 winPatterns.add("246");
 
-// i didn't used arrow function=> this doesn't work well within :)
+// i didn't used arrow function=> this doesn't work well within
 const play = function(){
     console.log(this);
     if(playerTurn == 'red') this.classList.add('redIcon');
