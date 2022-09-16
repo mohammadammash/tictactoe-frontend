@@ -2,7 +2,10 @@ const board = document.getElementById("board");
 const tiles = document.getElementsByClassName("tile");
 const restart_button = document.getElementById("reset-btn");
 const player1_score = document.getElementById("player1_score"); //RedPlayer
-const player2_score = document.getElementById("player2_score"); //YellowPlayer
+const player2_score = document.getElementById("player2_score"); //YellowPlayer2
+//title to show result
+const title = document.getElementById("title");
+
 // game vars
 let playerTurn = "red";
 let gameOver = false;
@@ -103,17 +106,29 @@ const checkWinner = () => {
 // change player:
 const changePlayer = () => {};
 
-// i didn't used arrow function=> this doesn't work well within
+// i didn't used arrow function=> this doesn't work well within //MAIN GAME
 const play = function () {
+    //validate if game is on, or it's over
+  if (gameOver) return;
+
   if (playerTurn == "red") this.classList.add("redIcon");
   else this.classList.add("yellowIcon");
   //after each click/add => check if there is a WINNER!
   const result = checkWinner();
-  if (result == "red-wins") console.log("REEEDD!!!");
-  if (result == "yellow-wins") console.log("YELLOWWW!!!");
-  if (result == "nothing-yet") console.log("NOTHING!!!");
+    // if red/player1 wins:
+  if (result === "red-wins") {
+    title.textContent = "Player1 '$Red Coin' WINSS!!";
+    gameOver = true;
+    return;
+    // if yellow/player2 wins:
+  } else if (result === "yellow-wins") {
+    title.textContent = "Player2'$Yellow Coin' WINSS!!";
+    board.classList.add("yellowBg");
+    gameOver = true;
+    return;
+  } else if (result == "nothing-yet") console.log("NOTHING!!!");
   //change player if currentRed then it becomes yellow, and vice versa
-  playerTurn = playerTurn === "red" ? playerTurn = "yellow" : "red";
+  playerTurn = playerTurn === "red" ? (playerTurn = "yellow") : "red";
 };
 
 for (let tile of tiles) tile.addEventListener("click", play);

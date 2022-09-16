@@ -18,7 +18,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(45deg, rgb(82, 82, 82) 0 50%, rgb(157, 157, 157) 50% 100%);
+  background: linear-gradient(
+    45deg,
+    rgb(82, 82, 82) 0 50%,
+    rgb(157, 157, 157) 50% 100%
+  );
 }
 main {
   display: flex;
@@ -28,10 +32,10 @@ main {
   height: 80%;
 }
 .player1 {
-  color: #FF030B;
+  color: #ff030b;
 }
 .player2 {
-  color: #F9CF03;
+  color: #f9cf03;
 }
 .board {
   width: 40%;
@@ -69,4 +73,19 @@ main {
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: center;
+}
+.redTitle {
+  color: #ff030b;
+}
+.yellowTitle {
+  color: #f9cf03;
+}
+.gameOver {
+  cursor: none;
+}
+.redBg {
+  background-color: #ff030b;
+}
+.yellowBg {
+  background-color: #f9cf03;
 }
