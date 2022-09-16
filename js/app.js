@@ -13,7 +13,7 @@ winPatterns.add("258");
 winPatterns.add("048");
 winPatterns.add("246");
 
-// check red win:
+// check RED win:
 const check_redWin = () => {
   // tiles 1->9 booleans if red: true else false
   const [
@@ -47,6 +47,46 @@ const check_redWin = () => {
     (tile2_red && tile5_red && tile8_red) ||
     (tile0_red && tile4_red && tile8_red) ||
     (tile2_red && tile4_red && tile6_red)
+  )
+    return true;
+    // if no true val exists, then it will return FALSE
+    return false;
+};
+
+// check YELLOW win:
+const check_yellowWin = () => {
+  // tiles 1->9 booleans if yellow: true else false
+  const [
+    tile0_yellow,
+    tile1_yellow,
+    tile2_yellow,
+    tile3_yellow,
+    tile4_yellow,
+    tile5_yellow,
+    tile6_yellow,
+    tile7_yellow,
+    tile8_yellow,
+  ] = [
+    board.children[0].classList.contains("yellowIcon"),
+    board.children[1].classList.contains("yellowIcon"),
+    board.children[2].classList.contains("yellowIcon"),
+    board.children[3].classList.contains("yellowIcon"),
+    board.children[4].classList.contains("yellowIcon"),
+    board.children[5].classList.contains("yellowIcon"),
+    board.children[6].classList.contains("yellowIcon"),
+    board.children[7].classList.contains("yellowIcon"),
+    board.children[8].classList.contains("yellowIcon"),
+  ];
+  //checking winning possibility for YELLOW: if one is true return TRUE else False
+  if (
+    (tile0_yellow && tile1_yellow && tile2_yellow) ||
+    (tile3_yellow && tile4_yellow && tile5_yellow) ||
+    (tile6_yellow && tile7_yellow && tile8_yellow) ||
+    (tile0_yellow && tile3_yellow && tile6_yellow) ||
+    (tile1_yellow && tile4_yellow && tile7_yellow) ||
+    (tile2_yellow && tile5_yellow && tile8_yellow) ||
+    (tile0_yellow && tile4_yellow && tile8_yellow) ||
+    (tile2_yellow && tile4_yellow && tile6_yellow)
   )
     return true;
     // if no true val exists, then it will return FALSE
