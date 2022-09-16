@@ -5,17 +5,18 @@ const player1_score = document.getElementById("player1_score"); //RedPlayer
 const player2_score = document.getElementById("player2_score"); //YellowPlayer2
 //title to show result
 const title = document.getElementById("title");
-let [score1, score2] = [0, 0];
-
 // game vars
+let [score1, score2] = [0, 0];
 let playerTurn = "red";
 let gameOver = false;
-let winPatterns = new Set();
-winPatterns.add("036");
-winPatterns.add("147");
-winPatterns.add("258");
-winPatterns.add("048");
-winPatterns.add("246");
+
+// restart Game: anytime a user clicks on restartButton:
+const restartGame = () => {
+  gameOver = false;
+  playerTurn = "red";
+  for (let tile of tiles) tile.classList.remove("yellowIcon", "redIcon");
+  board.classList.remove('yellowBg','redBg');
+};
 
 // check RED win:
 const check_redWin = () => {
@@ -100,10 +101,9 @@ const check_yellowWin = () => {
 // check Winner
 const checkWinner = () => {
   let result;
-  if (check_redWin()) result= "red-wins";
-  else if (check_yellowWin()) result= "yellow-wins";
-  else result= "nothing-yet";
-
+  if (check_redWin()) result = "red-wins";
+  else if (check_yellowWin()) result = "yellow-wins";
+  else result = "nothing-yet";
 
   // if red/player1 wins:
   if (result === "red-wins") {
@@ -118,7 +118,7 @@ const checkWinner = () => {
     score2 += 1;
     player2_score.textContent = score2;
     gameOver = true;
-};
+  }
 };
 
 // change player:
@@ -137,4 +137,7 @@ const play = function () {
   playerTurn = playerTurn === "red" ? (playerTurn = "yellow") : "red";
 };
 
+// each time a tile in the board is clicked
 for (let tile of tiles) tile.addEventListener("click", play);
+// each time a user clicks on the restart-button
+restart_button.addEventListener('click',restartGame);
