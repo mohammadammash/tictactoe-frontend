@@ -49,8 +49,8 @@ const check_redWin = () => {
     (tile2_red && tile4_red && tile6_red)
   )
     return true;
-    // if no true val exists, then it will return FALSE
-    return false;
+  // if no true val exists, then it will return FALSE
+  return false;
 };
 
 // check YELLOW win:
@@ -89,22 +89,31 @@ const check_yellowWin = () => {
     (tile2_yellow && tile4_yellow && tile6_yellow)
   )
     return true;
-    // if no true val exists, then it will return FALSE
-    return false;
+  // if no true val exists, then it will return FALSE
+  return false;
 };
 
 // check Winner
 const checkWinner = () => {
-  check_redWin();
-  check_yellowWin();
+  if (check_redWin()) return "red-wins";
+  else if (check_yellowWin()) return "yellow-wins";
+  return "nothing-yet";
 };
+
+// change player:
+const changePlayer = () => {};
 
 // i didn't used arrow function=> this doesn't work well within
 const play = function () {
   if (playerTurn == "red") this.classList.add("redIcon");
   else this.classList.add("yellowIcon");
-  checkWinner();
-  // changePlayer();
+  //after each click/add => check if there is a WINNER!
+  const result = checkWinner();
+  if (result == "red-wins") console.log("REEEDD!!!");
+  if (result == "yellow-wins") console.log("YELLOWWW!!!");
+  if (result == "nothing-yet") console.log("NOTHING!!!");
+  //change player if currentRed then it becomes yellow, and vice versa
+  playerTurn = playerTurn === "red" ? playerTurn = "yellow" : "red";
 };
 
 for (let tile of tiles) tile.addEventListener("click", play);
